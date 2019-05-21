@@ -2,16 +2,6 @@
 title: "Iris Modeling"
 author: <a href='https://github.com/natelangholz'> Nate Langholz</a>
 output:
-  #pdf_document:
-   # toc: yes
-    #toc_depth: '3'
-  html_document:
-    code_folding: hide
-    theme: lumen
-    toc: yes
-    toc_depth: 3
-    toc_float:
-      collapsed: yes
   github_document: default
 ---
 
@@ -19,7 +9,7 @@ output:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 ```
 
-**Project Name**: Compass Canada     
+**Project Name**: Iris Modeling Development Work    
 **Knitted Date**: `r Sys.Date()`   
 
 # Intro
@@ -63,8 +53,10 @@ Let's now create two linear models and select one as a final model to save to us
 model_1 <- lm(Petal.Length ~ Petal.Width, data = data.iris)
 summary(model_1)
 ```
+Let's create a second model.
 
-```{r model1}
+```{r model2}
+
 # create a second model
 model_2 <- lm(Petal.Length ~ Petal.Width + Sepal.Length, data = data.iris)
 summary(model_2)
@@ -72,9 +64,11 @@ summary(model_2)
 
 ### Save Model
 
-```{r model2}
+Save model 2 to use in our API. 
+
+```{r model_save}
 #save the final model
-saveRDS(model_2,"../api/scripts/model_1.RDS")
+saveRDS(model_2,"../api/scripts/model_2.RDS")
 ```
 
 
