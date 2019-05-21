@@ -1,0 +1,14 @@
+version: '2.3'
+services:
+    rstudio:
+        environment:
+         - USER=rstudio
+         - PASSWORD=stat418
+        build:
+            context: .
+        #image: rockerverse
+        volumes:
+            - ../../:/home/rstudio/
+        ports:
+            - 8787:8787
+ 

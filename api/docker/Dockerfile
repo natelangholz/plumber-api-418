@@ -7,7 +7,7 @@ RUN apt-get update -qq && apt-get install -y \
   libcurl4-gnutls-dev
 
 # install plumber
-RUN R -e "install.packages('plumber')"
+RUN R -e "install.packages(c('plumber','jsonlite'))"
 
 # copy everything from the current directory into the container
 #COPY / /
