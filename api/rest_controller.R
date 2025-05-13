@@ -1,9 +1,22 @@
 #load json library
 library(jsonlite)
 
-# load the model
-model <- readRDS("../scripts/model_2.RDS")
 
+#####################
+
+#* Health check - Returns the API status and the current server time
+#* @get /health_check
+function() {
+    list(
+	status = "the API is running :) ",
+	time = Sys.time()
+    )
+}
+
+
+####################
+# load the model
+model <- readRDS("model_2.RDS")
 
 get_predict_length <- function(json_input){
     
@@ -18,13 +31,14 @@ get_predict_length <- function(json_input){
   #create the prediction data frame
   prediction_data <- data.frame(cbind(Petal.Width=petal_width,Sepal.Length = sepal_length))
   #print(prediction_data)
-  # create the prediction
+  #create the prediction
   predictions <- predict(model,prediction_data)
-  predictions
+  list(predicted_petal_length = predictions)
 }
 
-#* @get /predict_petal_length
+
+#* @post /predict_petal_length
 function(req) {
-    print(req$postBody)
+    #print(req$postBody)
     get_predict_length(req$postBody)
 }
