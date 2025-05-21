@@ -1,5 +1,6 @@
 services:
   rocker:
+    platform: "linux/amd64"
     build : .
     volumes :
      - .:/api
